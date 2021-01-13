@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           color: Colors.white
-        )
+        ),
       ),
             home: HomePage()
     );
