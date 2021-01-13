@@ -29,6 +29,7 @@ Adisyon(BuildContext context) {
   Urunler.add(urun);
   return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         actions: [
           Container(
             width: MediaQuery.of(context).size.width,
@@ -197,17 +198,17 @@ Adisyon(BuildContext context) {
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Container(
-                height: 70,
+                height: MediaQuery.of(context).size.width / 5,
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     container1(Icons.add, "Hizmet/Ürün Ekle",
-                        Color.fromRGBO(56, 56, 151, 1)),
+                        Color.fromRGBO(56, 56, 151, 1),context),
                     container1(Icons.local_offer_outlined, "İndirim Uygula",
-                        Color.fromRGBO(231, 167, 5, 1)),
+                        Color.fromRGBO(231, 167, 5, 1),context),
                     container1(Icons.wallet_membership_outlined, "Ödeme Ekle",
-                        Color.fromRGBO(13, 147, 94, 1)),
+                        Color.fromRGBO(13, 147, 94, 1),context),
                   ],
                 ),
               ),
@@ -222,7 +223,7 @@ Adisyon(BuildContext context) {
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 2,
+                itemCount: Hizmetler.length,
                 itemBuilder: (context, index) {
                   return HizmetlerCard(Hizmetler[index]);
                 }),
@@ -236,7 +237,7 @@ Adisyon(BuildContext context) {
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 1,
+                itemCount: Urunler.length,
                 itemBuilder: (context, index) {
                   return UrunlerCard(Urunler[index]);
                 }),
@@ -281,7 +282,7 @@ UrunlerCard(Urun urun) {
                 Text(urun.name,style:TextStyle(color: Color.fromRGBO(70, 70, 70, 1)),),
 
                 Text("${urun.payment}₺ | ${urun.piece} Adet | ${urun.custom}₺",style: TextStyle(fontWeight: FontWeight.w400,color: Colors.grey),),
-                UserInfo()
+                UserInfo(25)
               ],
             ),
           ),
@@ -332,7 +333,7 @@ HizmetlerCard(Hizmet hizmet) {
                 Text(hizmet.name,style:TextStyle(color: Color.fromRGBO(70, 70, 70, 1)),),
 
                 Text("${hizmet.payment}₺",style: TextStyle(fontWeight: FontWeight.w400,color: Colors.grey),),
-                UserInfo()
+                UserInfo(25)
               ],
             ),
           ),
@@ -379,10 +380,10 @@ HizmetlerContainer() {
   );
 }
 
-container1(var icon, String string, var renk) {
+container1(var icon, String string, var renk,BuildContext context) {
   return Container(
     height: 70,
-    width: 115,
+    width: MediaQuery.of(context).size.width/3.5,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       color: renk,
@@ -412,7 +413,7 @@ container1(var icon, String string, var renk) {
               color: Color.fromRGBO(250, 250, 250, 0.1)),
         ),
         Text(
-          string,
+          string,textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
         )

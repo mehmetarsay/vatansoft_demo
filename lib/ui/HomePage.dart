@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
     if(currentIndex == null)
       return Create();
     if(currentIndex == 0)
-      return RandevuIslem();
+      return RandevuIslem(context);
     if(currentIndex == 1)
       return RandevuTablo();
     if(currentIndex == 2)
